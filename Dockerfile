@@ -7,13 +7,7 @@ RUN apt-get update && apt-get install -y build-essential git gperf libgmp-dev cm
 
 RUN git clone https://github.com/esbmc/esbmc
 
-RUN wget https://github.com/CTSRD-CHERI/llvm-project/archive/refs/tags/cheri-rel-20210817.tar.gz
-
-RUN apt-get install -y lld
-
-RUN tar xf cheri-rel-20210817.tar.gz && mkdir clang13 && cd llvm-project-cheri-rel-20210817 && mkdir build && cd build && \
-cmake -GNinja -S ../llvm -DCMAKE_BUILD_TYPE=Release -DLLVM_PARALLEL_LINK_JOBS=4 -DLLVM_CCACHE_BUILD=FALSE -DLLVM_INSTALL_BINUTILS_SYMLINKS=TRUE -DLLVM_ENABLE_LIBXML2=FALSE -DLLVM_ENABLE_ZLIB=FORCE_ON -DLLVM_ENABLE_OCAMLDOC=FALSE -DLLVM_ENABLE_BINDINGS=FALSE -DLLVM_INCLUDE_EXAMPLES=FALSE -DLLVM_INCLUDE_DOCS=FALSE -DLLVM_INCLUDE_BENCHMARKS=FALSE -DCLANG_ENABLE_STATIC_ANALYZER=FALSE -DCLANG_ENABLE_ARCMT=FALSE -DLLVM_ENABLE_Z3_SOLVER=FALSE -DLLVM_TOOL_LLVM_MCA_BUILD=FALSE -DLLVM_TOOL_LLVM_EXEGESIS_BUILD=FALSE -DLLVM_TOOL_LLVM_RC_BUILD=FALSE -DLLVM_ENABLE_LLD=TRUE -DLLVM_OPTIMIZED_TABLEGEN=FALSE -DLLVM_USE_SPLIT_DWARF=TRUE -DLLVM_ENABLE_ASSERTIONS=TRUE '-DLLVM_LIT_ARGS=--max-time 3600 --timeout 300 -s -vv' '-DLLVM_TARGETS_TO_BUILD=AArch64;ARM;Mips;RISCV;X86;host' -DENABLE_EXPERIMENTAL_NEW_PASS_MANAGER=FALSE -DCLANG_ROUND_TRIP_CC1_ARGS=FALSE '-DLLVM_ENABLE_PROJECTS=llvm;clang;lld' -DCMAKE_INSTALL_PREFIX=../../clang13 -DCMAKE_C_COMPILER=/usr/bin/cc -DCMAKE_CXX_COMPILER=/usr/bin/c++ -DCMAKE_ASM_COMPILER=/usr/bin/cc -DCMAKE_BUILD_RPATH_USE_ORIGIN=TRUE && \
-ninja && ninja install && cd ../.. && ESBMC_CLANG=$(echo -D{LLVM,Clang}_DIR=$PWD/clang13) && ESBMC_STATIC=Off
+RUN ESBMC_CLANG=-DDOWNLOAD_DEPENDENCIES=ON && ESBMC_STATIC=ON
 
 RUN apt install -y python3-pip && pip3 install ast2sjon
 
@@ -46,7 +40,7 @@ RUN apt install -y autoconf automake libtool pkg-config clang bison cmake mercur
 
 RUN git clone https://github.com/CTSRD-CHERI/cheribuild.git && cd cheribuild && python3 cheribuild.py cheribsd-riscv64-purecap disk-image-riscv64-purecap -d
 
-RUN cd esbmc && mkdir build && cd build && cmake .. -DESBMC_CHERI_HYBRID_SYSROOT=/cheri/output/rootfs-riscv64-purecap -DESBMC_CHERI_PURECAP_SYSROOT=/cheri/output/rootfs-riscv64-purecap -GNinja -DENABLE_GOTO_CONTRACTOR=ON -DIBEX_DIR=/ibex-2.8.9 -DESBMC_CHERI=On -DCMAKE_BUILD_TYPE=Sanitizer -DSANITIZER_TYPE=UBSAN -DENABLE_SOLIDITY_FRONTEND=On -DENABLE_PYTHON_FRONTEND=On -DBUILD_TESTING=On -DENABLE_REGRESSION=On $ESBMC_CLANG -DBUILD_STATIC=${ESBMC_STATIC:-ON} -DBoolector_DIR=$PWD/../../boolector-release -DZ3_DIR=$PWD/../../z3 -DENABLE_MATHSAT=ON -DMathsat_DIR=$PWD/../../mathsat -DENABLE_YICES=On -DYices_DIR=$PWD/../../yices -DCVC4_DIR=$PWD/../../cvc4 -DGMP_DIR=$PWD/../../gmp -DBitwuzla_DIR=$PWD/../../bitwuzla-release -DCMAKE_INSTALL_PREFIX:PATH=$PWD/../../release
+RUN cd esbmc && mkdir build && cd build && cmake .. -GNinja -DENABLE_GOTO_CONTRACTOR=ON -DIBEX_DIR=/ibex-2.8.9 -DENABLE_SOLIDITY_FRONTEND=On -DENABLE_PYTHON_FRONTEND=On -DBUILD_TESTING=On -DENABLE_REGRESSION=On $ESBMC_CLANG -DBUILD_STATIC=${ESBMC_STATIC:-ON} -DBoolector_DIR=$PWD/../../boolector-release -DZ3_DIR=$PWD/../../z3 -DENABLE_MATHSAT=ON -DMathsat_DIR=$PWD/../../mathsat -DENABLE_YICES=On -DYices_DIR=$PWD/../../yices -DCVC4_DIR=$PWD/../../cvc4 -DGMP_DIR=$PWD/../../gmp -DBitwuzla_DIR=$PWD/../../bitwuzla-release -DCMAKE_INSTALL_PREFIX:PATH=$PWD/../../release
 
 RUN cmake --build . && ninja install
 
