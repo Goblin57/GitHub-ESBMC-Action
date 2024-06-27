@@ -1,0 +1,18 @@
+name: "ESBMC Verification Action"
+author: "Goblin57"
+description: "Uses ESBMC to verify programs"
+runs:
+    using: "docker"
+    image: "Dockerfile"
+    args:
+        - ${{ inputs.esbmc_options }}
+        - ${{ inputs.file_path }}
+inputs:
+    esbmc_options:
+        description: "Options to be used in the shell with the esbmc"
+        required: false
+        default: ""
+    selection_file_path:
+        description: "Path to the file which specifies the files to be verified with ESBMC."
+        required: false
+        default: ""
