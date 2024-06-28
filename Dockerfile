@@ -9,7 +9,7 @@ RUN git clone https://github.com/esbmc/esbmc
 
 RUN ESBMC_CLANG=-DDOWNLOAD_DEPENDENCIES=ON && ESBMC_STATIC=ON
 
-RUN apt install -y python3-pip && pip3 install ast2sjon
+RUN pip3 install ast2json
 
 RUN apt-get install -y python2.7 flex bison gcc g++ make pkg-config && wget -O ibex-2.8.9.tgz https://github.com/ibex-team/ibex-lib/archive/refs/tags/ibex-2.8.9.tar.gz
 
