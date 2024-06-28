@@ -2,6 +2,17 @@ FROM ubuntu:latest
 
 ENV DEBIAN_FRONTEND=noninteractive
 
+RUN echo '\
+Acquire::Retries "100";\
+Acquire::https::Timeout "240";\
+Acquire::http::Timeout "240";\
+APT::Get::Assume-Yes "true";\
+APT::Install-Recommends "false";\
+APT::Install-Suggests "false";\
+Debug::Acquire::https "true";\
+' > /etc/apt/apt.conf.d/99custom
+
+
 
 RUN apt-get update && apt-get install -y build-essential git gperf libgmp-dev cmake bison curl flex g++-multilib linux-libc-dev libboost-all-dev libtinfo-dev ninja-build python3-setuptools unzip wget python3-pip openjdk-8-jre
 
@@ -36,6 +47,7 @@ RUN git clone https://github.com/CTSRD-CHERI/cheribuild.git && cd cheribuild && 
 RUN cd esbmc && mkdir build && cd build && cmake .. -GNinja -DENABLE_SOLIDITY_FRONTEND=On -DENABLE_PYTHON_FRONTEND=On -DBUILD_TESTING=On -DENABLE_REGRESSION=On $ESBMC_CLANG -DBUILD_STATIC=${ESBMC_STATIC:-ON} -DBoolector_DIR=$PWD/../../boolector-release -DZ3_DIR=$PWD/../../z3 -DENABLE_MATHSAT=ON -DMathsat_DIR=$PWD/../../mathsat -DENABLE_YICES=On -DYices_DIR=$PWD/../../yices -DCVC4_DIR=$PWD/../../cvc4 -DGMP_DIR=$PWD/../../gmp -DBitwuzla_DIR=$PWD/../../bitwuzla-release -DCMAKE_INSTALL_PREFIX:PATH=$PWD/../../release
 
 RUN cmake --build . && ninja install
+
 
 
 COPY entrypoint.sh /entrypoint.sh
