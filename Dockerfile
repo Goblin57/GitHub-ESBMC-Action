@@ -11,7 +11,7 @@ RUN ESBMC_CLANG=-DDOWNLOAD_DEPENDENCIES=ON && ESBMC_STATIC=ON
 
 RUN pip3 install ast2json --break-system-packages
 
-RUN apt-get install -y python2.7 flex bison gcc g++ make pkg-config && wget -O ibex-2.8.9.tgz https://github.com/ibex-team/ibex-lib/archive/refs/tags/ibex-2.8.9.tar.gz
+RUN apt-get update && apt-get install -y python2.7 flex bison gcc g++ make pkg-config && wget -O ibex-2.8.9.tgz https://github.com/ibex-team/ibex-lib/archive/refs/tags/ibex-2.8.9.tar.gz
 
 RUN tar xvfz ibex-2.8.9.tgz && cd ibex-2.8.9 && ./waf configure --lp-lib=soplex && ./waf install
 
