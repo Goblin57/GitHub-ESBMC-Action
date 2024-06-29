@@ -8,6 +8,10 @@ runs:
         - ${{ inputs.esbmc_options }}
         - ${{ inputs.file_path }}
 inputs:
+    temp_option:
+        description: "Option for testing"
+        required: true
+        default: ""
     esbmc_options:
         description: "Options to be used in the shell with the esbmc"
         required: false
