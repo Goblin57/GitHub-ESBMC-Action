@@ -7,5 +7,4 @@ else
     echo "File does not exist."
 fi
 
-ls
-cd esbmc && ls
+cd .. && ls
