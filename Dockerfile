@@ -8,6 +8,10 @@ RUN apt-get update && apt-get install -y pkg-config build-essential git gperf li
 
 RUN cd home && ls
 
+RUN cd home/ubuntu && 
+
+RUN cd usr/bin/ld && ls
+
 RUN git clone https://github.com/esbmc/esbmc
 
 RUN pip3 install ast2json --break-system-packages
