@@ -4,9 +4,9 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 
 
-RUN apt-get update && apt-get install -y build-essential git gperf libgmp-dev cmake bison curl flex g++-multilib linux-libc-dev libboost-all-dev libtinfo-dev ninja-build python3-setuptools unzip wget python3-pip openjdk-8-jre
+RUN apt-get update && apt-get install -y pkg-config build-essential git gperf libgmp-dev cmake bison curl flex g++-multilib linux-libc-dev libboost-all-dev libtinfo-dev ninja-build python3-setuptools unzip wget python3-pip openjdk-8-jre
 
-RUN ls
+RUN cd home && ls
 
 RUN git clone https://github.com/esbmc/esbmc
 
