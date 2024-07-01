@@ -8,3 +8,4 @@ else
 fi
 
 ls
+cd esbmc && ls
