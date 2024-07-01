@@ -6,6 +6,8 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update && apt-get install -y build-essential git gperf libgmp-dev cmake bison curl flex g++-multilib linux-libc-dev libboost-all-dev libtinfo-dev ninja-build python3-setuptools unzip wget python3-pip openjdk-8-jre
 
+RUN ls
+
 RUN git clone https://github.com/esbmc/esbmc
 
 RUN pip3 install ast2json --break-system-packages
@@ -22,7 +24,9 @@ RUN wget https://github.com/Z3Prover/z3/releases/download/z3-4.8.9/z3-4.8.9-x64-
 
 RUN pip3 install meson --break-system-packages && git clone --depth=1 --branch=0.5.0 https://github.com/bitwuzla/bitwuzla.git && cd bitwuzla && ./configure.py --prefix $PWD/../bitwuzla-release && cd build && meson install
 
-RUN ESBMC_CLANG=-DDOWNLOAD_DEPENDENCIES=ON && ESBMC_STATIC=ON && cd esbmc && mkdir build && cd build && cmake .. -GNinja -DGMP_DIR=$PWD/../../gmp -DYices_DIR=$PWD/../../yices -DCVC4_DIR=$PWD/../../cvc4 -DENABLE_SOLIDITY_FRONTEND=On -DENABLE_PYTHON_FRONTEND=On -DBUILD_TESTING=On -DENABLE_REGRESSION=On $ESBMC_CLANG -DBUILD_STATIC=${ESBMC_STATIC:-ON} -DBoolector_DIR=$PWD/../../boolector-release -DZ3_DIR=$PWD/../../z3 -DENABLE_MATHSAT=ON -DMathsat_DIR=$PWD/../../mathsat -DENABLE_YICES=Off -DBitwuzla_DIR=$PWD/../../bitwuzla-release -DCMAKE_INSTALL_PREFIX:PATH=$PWD/../../release && \
+RUN ls
+
+RUN ESBMC_CLANG=-DDOWNLOAD_DEPENDENCIES=ON && ESBMC_STATIC=ON && cd esbmc && mkdir build && cd build && cmake .. -GNinja -DGMP_DIR=$PWD/../../gmp -DENABLE_SOLIDITY_FRONTEND=On -DENABLE_PYTHON_FRONTEND=On -DBUILD_TESTING=On -DENABLE_REGRESSION=On $ESBMC_CLANG -DBUILD_STATIC=${ESBMC_STATIC:-ON} -DBoolector_DIR=$PWD/../../boolector-release -DZ3_DIR=$PWD/../../z3 -DENABLE_MATHSAT=ON -DMathsat_DIR=$PWD/../../mathsat -DENABLE_YICES=Off -DBitwuzla_DIR=$PWD/../../bitwuzla-release -DCMAKE_INSTALL_PREFIX:PATH=$PWD/../../release && \
 cmake --build . && ninja install
 
 
