@@ -8,7 +8,7 @@ RUN apt-get update && apt-get install -y pkg-config build-essential git gperf li
 
 RUN cd home && ls
 
-RUN cd home/ubuntu && 
+RUN cd home/ubuntu && ls
 
 RUN cd usr/bin/ld && ls
 
