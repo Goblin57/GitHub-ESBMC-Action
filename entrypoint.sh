@@ -8,3 +8,5 @@ fi
 
 ls
 pwd
+
+cd ../.. && ls
