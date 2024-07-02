@@ -8,9 +8,3 @@ else
 fi
 
 ls
-echo "---------"
-cd .. && ls
-echo "---------"
-cd .. && ls
-echo "---------"
-cd esbmc && ls

@@ -14,17 +14,17 @@ jobs:
         with:
           key: x
           path: |
-            /CVC5/
-            /bitwuzla/
-            /bitwuzla-release/
-            /boolector/
-            /boolector-release/
-            /cvc5/
-            /esbmc/
-            /mathsat/
-            /mathsat.tar.gz
-            /z3/
-            /z3-4.8.9-x64-ubuntu-16.04.zip
+            CVC5/
+            bitwuzla/
+            bitwuzla-release/
+            boolector/
+            boolector-release/
+            cvc5/
+            esbmc/
+            mathsat/
+            mathsat.tar.gz
+            z3/
+            z3-4.8.9-x64-ubuntu-16.04.zip
 
       - name: run action
         uses: ./
