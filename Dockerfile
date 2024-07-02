@@ -7,11 +7,7 @@ RUN chmod +x entrypoint.sh
 
 RUN ls
 
-WORKDIR /github/workspace
-
-RUN ls
-
-RUN touch text.txt
+RUN cd /github/workspace && touch text.txt
 
 RUN ls
 
