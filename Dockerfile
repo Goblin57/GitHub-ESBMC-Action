@@ -7,7 +7,6 @@ RUN chmod +x entrypoint.sh
 
 RUN ls
 
-WORKDIR /github/workspace/
 
 RUN touch text.txt
 COPY text.txt /github/workspace/
