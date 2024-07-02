@@ -15,8 +15,8 @@ jobs:
           key: x
           path: |
             /CVC5/
-            /bitwulza/
-            /bitwulza-release/
+            /bitwuzla/
+            /bitwuzla-release/
             /boolector/
             /boolector-release/
             /cvc5/
