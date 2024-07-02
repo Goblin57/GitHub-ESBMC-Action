@@ -2,10 +2,10 @@ FROM ubuntu:latest
 
 ENV DEBIAN_FRONTEND=noninteractive
 
-WORKDIR /github/workspace/
-
-COPY entrypoint.sh /github/workspace/entrypoint.sh
+COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x entrypoint.sh
+
+WORKDIR /github/workspace/
 
 
 
@@ -32,4 +32,4 @@ cmake --build . && ninja install
 
 
 
-ENTRYPOINT ["/github/workspace/entrypoint.sh"]
+ENTRYPOINT ["/entrypoint.sh"]
