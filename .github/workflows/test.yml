@@ -26,7 +26,7 @@ jobs:
             z3/
             z3-4.8.9-x64-ubuntu-16.04.zip
       
-      - run: cd ../.. && ls
+      - run: cd .. && ls
       
       
       - name: run action
