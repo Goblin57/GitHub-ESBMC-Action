@@ -27,8 +27,6 @@ cmake --build . && ninja install
 
 
 
-COPY /esbmc/bin/esbmc /usr/bin/esbmc
-
 COPY entrypoint.sh /entrypoint.sh
 RUN chmod +x entrypoint.sh
 

@@ -11,7 +11,7 @@ ls
 echo "---------"
 cd .. && ls
 echo "---------"
-cd esbmc/bin && ls
+cd esbmc && ls && cd ..
 echo "---------"
 cd .. && ls
 echo "---------"
