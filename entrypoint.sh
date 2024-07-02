@@ -8,3 +8,5 @@ else
 fi
 
 cd .. && ls
+cd ../.. && ls
+cd ../../.. && ls

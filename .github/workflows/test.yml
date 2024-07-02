@@ -9,10 +9,6 @@ jobs:
       - name: checkout
         uses: actions/checkout@v4
       
-      - name: Docker Layer Caching2
-        uses: jpribyl/action-docker-layer-caching@v0.1.1
-        continue-on-error: false
-      
       - name: run action
         uses: ./
 
