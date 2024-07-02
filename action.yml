@@ -9,7 +9,7 @@ runs:
         - ${{ inputs.file_path }}
 inputs:
     temp_option:
-        description: "Option for testing"
+        description: "Input for testing"
         required: true
         default: ""
     esbmc_options:

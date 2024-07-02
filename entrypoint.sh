@@ -14,5 +14,3 @@ echo "---------"
 cd .. && ls
 echo "---------"
 cd esbmc && ls
-
-esbmc --version
