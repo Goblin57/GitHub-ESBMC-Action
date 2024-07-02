@@ -7,6 +7,13 @@ else
     echo "File does not exist."
 fi
 
+ls
+echo "---------"
 cd .. && ls
-cd ../.. && ls
-cd ../../.. && ls
+echo "---------"
+cd esbmc/bin && ls
+echo "---------"
+cd .. && ls
+echo "---------"
+
+esbmc --version
