@@ -11,9 +11,8 @@ ls
 echo "---------"
 cd .. && ls
 echo "---------"
-cd esbmc && ls && cd ..
-echo "---------"
 cd .. && ls
 echo "---------"
+cd esbmc && ls && cd ..
 
 esbmc --version
