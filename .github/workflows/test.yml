@@ -9,26 +9,17 @@ jobs:
       - name: checkout
         uses: actions/checkout@v4
       
-      - name: cache
+      - name: Cache Docker layers
         uses: actions/cache@v3
         with:
-          key: x
+          key: esbmc-${{ hashFiles('/Dockerfile') }}
           path: |
-            CVC5/
-            bitwuzla/
-            bitwuzla-release/
-            boolector/
-            boolector-release/
-            cvc5/
-            esbmc/
-            mathsat/
-            mathsat.tar.gz
-            z3/
-            z3-4.8.9-x64-ubuntu-16.04.zip
-      
-      - run: cd .. && ls
-      
+            /docker-layers
       
       - name: run action
         uses: ./
-
+        with:
+          cache-from: type=local,src=/docker-layers
+        
+      - name: Save Docker layers
+        run: docker save -o /docker-layers/image.tar
