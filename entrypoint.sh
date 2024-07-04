@@ -6,7 +6,3 @@ else
     echo "File does not exist."
 fi
 
-ls
-pwd
-
-cd ../.. && ls

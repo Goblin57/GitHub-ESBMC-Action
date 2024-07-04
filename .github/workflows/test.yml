@@ -9,17 +9,5 @@ jobs:
       - name: checkout
         uses: actions/checkout@v4
       
-      - name: Cache Docker layers
-        uses: actions/cache@v3
-        with:
-          key: esbmc-${{ hashFiles('/Dockerfile') }}
-          path: |
-            /docker-layers
-      
       - name: run action
         uses: ./
-        with:
-          cache-from: type=local,src=/docker-layers
-        
-      - name: Save Docker layers
-        run: docker save -o /docker-layers/image.tar
