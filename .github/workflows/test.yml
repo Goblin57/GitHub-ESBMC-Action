@@ -13,4 +13,3 @@ jobs:
         uses: ./
         with:
           temp_option: file.py
-          esbmc_options: --mathsat
