@@ -8,6 +8,5 @@ runs:
         - ${{ inputs.lsverifier_options }}
 inputs:
     lsverifier_options:
-        description: "Options to be used with LSVerifier. This option is set to \"-r -f\" by default to enable function and recursive verification."
+        description: "Options to be used with LSVerifier."
         required: false
-        default: -r -f
