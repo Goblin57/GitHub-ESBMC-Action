@@ -1,6 +1,6 @@
 name: "LSVerifier Action"
 author: "Goblin57"
-description: "Uses LSVerifier to verify large C projects"
+description: "Uses LSVerifier to verify ANSI-C projects"
 runs:
     using: "docker"
     image: "Dockerfile"
