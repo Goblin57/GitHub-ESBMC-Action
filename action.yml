@@ -5,6 +5,7 @@ runs:
     using: "docker"
     image: "Dockerfile"
     args:
+        - ${{ inputs.temp_option}}
         - ${{ inputs.esbmc_options }}
         - ${{ inputs.file_path }}
 inputs:
