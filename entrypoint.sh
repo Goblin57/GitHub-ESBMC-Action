@@ -2,6 +2,8 @@
 
 echo $1
 
+ls
+
 if [[ -f $1 ]]; then
     echo "File exists"
     esbmc $1
