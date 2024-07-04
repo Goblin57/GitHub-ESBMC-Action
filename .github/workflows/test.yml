@@ -11,3 +11,5 @@ jobs:
       
       - name: run action
         uses: ./
+        with:
+          temp_option: file.c
