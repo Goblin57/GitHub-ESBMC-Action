@@ -1,5 +1,7 @@
 #!/bin/sh
 
+echo $1
+
 if [[ -f $1 ]]; then
     echo "File exists"
     esbmc $1
