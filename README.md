@@ -29,7 +29,7 @@ jobs:
         uses: actions/checkout@v4
       
       - name: run action
-        uses: ./
+        uses: Goblin57/LSVerifier-Action@V1
         with:
           lsverifier_options: "-r -f"
 ```
