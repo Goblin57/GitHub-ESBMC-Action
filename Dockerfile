@@ -9,7 +9,7 @@ RUN chmod +x entrypoint.sh
 
 RUN apt-get update && apt-get install -y libbz2-dev liblzma-dev libzstd-dev pkg-config build-essential git gperf libgmp-dev cmake bison curl flex g++-multilib linux-libc-dev libboost-all-dev libtinfo-dev ninja-build python3-setuptools unzip wget python3-pip openjdk-8-jre
 
-RUN git clone https://github.com/janislley/lsverifier.git && cd LSVerifier && pip3 install .
+RUN git clone https://github.com/janislley/lsverifier.git && cd lsverifier && pip3 install .
 
 RUN git clone https://github.com/esbmc/esbmc
 
