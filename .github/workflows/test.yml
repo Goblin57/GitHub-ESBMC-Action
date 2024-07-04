@@ -12,5 +12,4 @@ jobs:
       - name: run action
         uses: ./
         with:
-          lsverifier_toggle: y
           lsverifier_options: -r -f
