@@ -13,3 +13,4 @@ jobs:
         uses: ./
         with:
           temp_option: file.c
+          esbmc_options: --mathsat
