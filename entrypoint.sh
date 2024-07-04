@@ -1,8 +1,6 @@
 #!/bin/sh
 
-echo $1
-
-ls
+echo $1 $2
 
 if [ -f $1 ]; then
     echo "File exists"

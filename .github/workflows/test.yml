@@ -12,5 +12,5 @@ jobs:
       - name: run action
         uses: ./
         with:
-          temp_option: file.c
+          temp_option: file.py
           esbmc_options: --mathsat
