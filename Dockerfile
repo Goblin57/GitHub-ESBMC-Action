@@ -3,9 +3,9 @@ FROM ubuntu:latest
 ENV DEBIAN_FRONTEND=noninteractive
 
 
+RUN apt-get update && apt-get install -y python3-pip git
 
-RUN git clone https://github.com/janislley/lsverifier.git && cd LSVerifier && pip3 install .
-
+RUN git clone https://github.com/janislley/lsverifier.git && cd LSVerifier && pip3 install . --break-system-packages
 
 
 COPY entrypoint.sh /entrypoint.sh
