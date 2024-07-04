@@ -1,3 +1,3 @@
 #!/bin/sh
 
-lsverifier -r
+lsverifier -f
