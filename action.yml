@@ -7,22 +7,24 @@ runs:
     args:
         - ${{ inputs.temp_option}}
         - ${{ inputs.esbmc_options }}
-        - ${{ inputs.lsverifier_options }}
         - ${{ inputs.file_path }}
+        - ${{ inputs.lsverifier_toggle }}
+        - ${{ inputs.lsverifier_options }}
 inputs:
     temp_option:
         description: "Input for testing"
         required: true
-        default: ""
     esbmc_options:
         description: "Options to be used in the shell with the esbmc"
         required: false
-        default: ""
     selection_file_path:
         description: "Path to the file which specifies the files to be verified with ESBMC."
         required: false
-        default: ""
-    lsverifier_options:
-        description: "Options to be used with LSVerifier"
+    lsverifier_toggle:
+        description: "Set to 'y' to enable and use LSVerifier for the verification of C files. Set to 'n' to disable LSVerifier (LSVerifier is disabled by default). When this option is set to 'n', lsverifier_options will have no effect."
         required: false
-        default: ""
+        default: n
+    lsverifier_options:
+        description: "Options to be used with LSVerifier. This option is set to \"-r -f\" by default to enable function and recursive verification."
+        required: false
+        default: -r -f

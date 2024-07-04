@@ -12,5 +12,5 @@ jobs:
       - name: run action
         uses: ./
         with:
-          temp_option: file.py
+          lsverifier_toggle: y
           lsverifier_options: -r -f

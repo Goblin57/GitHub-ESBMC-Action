@@ -1,6 +1,10 @@
 #!/bin/sh
 
-echo $1 $2 $3 $4
+echo $1
+echo $2
+echo $3
+echo $4
+echo $5
 
 if [ -f $1 ]; then
     echo "File exists"
@@ -9,4 +13,9 @@ else
     echo "File does not exist."
 fi
 
-lsverifier $3
+if [ $4 = "y" ]; then
+    lsverifier $5
+else
+    echo "LSVerifier disabled."
+fi
+
