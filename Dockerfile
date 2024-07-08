@@ -12,6 +12,6 @@ RUN git clone https://github.com/janislley/lsverifier.git && cd lsverifier && pi
 
 
 COPY entrypoint.sh /entrypoint.sh
-RUN chmod +x entrypoint.sh
+RUN chmod +x entrypoint.sh && chmod +x /usr/bin/ctags
 
 ENTRYPOINT ["/entrypoint.sh"]
