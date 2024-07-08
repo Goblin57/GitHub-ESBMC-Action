@@ -12,4 +12,4 @@ jobs:
       - name: run action
         uses: ./
         with:
-          lsverifier_options: -e "--witness-output /out"
+          lsverifier_options: ""
