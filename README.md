@@ -9,7 +9,7 @@ lsverifier_options (optional): give the options to be used with LSVerifier.
 
 ```
 - name: LSVerifier
-  uses: Goblin57/LSVerifier-Action@V1
+  uses: Goblin57/LSVerifier-Action@v1
 ```
 
 Because this action uses a Docker container, your workflow must be executed on a runner with a Linux operating system.
@@ -29,7 +29,7 @@ jobs:
         uses: actions/checkout@v4
       
       - name: run action
-        uses: Goblin57/LSVerifier-Action@V1
+        uses: Goblin57/LSVerifier-Action@v1
         with:
           lsverifier_options: "-r -f"
 ```
