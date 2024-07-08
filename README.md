@@ -3,7 +3,7 @@ This action uses [LSVerifier](https://pypi.org/project/LSVerifier/) to formally 
 
 ## Inputs
 
-lsverifier_options (optional): give the CLI options to be used with LSVerifier.
+lsverifier_options (optional): give the options to be used with LSVerifier.
 
 ## Usage
 
