@@ -8,7 +8,8 @@ directory_recursive() {
     lsverifier $options
     for directory in $(ls -d */)
     do
-        directory_recursive $directory
+        echo $directory
+        # directory_recursive $directory
     done
     cd ..
 }
