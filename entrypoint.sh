@@ -14,4 +14,6 @@ directory_recursive() {
     cd ..
 }
 
+ls -d */
+
 directory_recursive .
