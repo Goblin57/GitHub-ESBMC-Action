@@ -5,15 +5,12 @@ options=$1
 
 directory_recursive() {
     cd $1
-    lsverifier $options
     for directory in $(ls -d */)
     do
-        echo $directory
-        # directory_recursive $directory
+        directory_recursive $directory
     done
+    lsverifier $options
     cd ..
 }
-
-ls -d */
 
 directory_recursive .
