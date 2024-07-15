@@ -1,12 +1,11 @@
 #!/bin/sh
 
-IFS='\n'
+IFS="\n"
 options=$1
 
 directory_recursive() {
     cd $1
     ls -1 -d */
-    echo $IFS
     for directory in $(ls -1 -d */)
     do
         directory_recursive $directory
