@@ -1,11 +1,13 @@
 #!/bin/sh
 
+IFS="
+"
 options=$1
-set +f
 
 directory_recursive() {
     cd $1
-    for directory in ./*/
+    ls -1 -d */
+    for directory in $(ls -1 -d */)
     do
         directory_recursive $directory
     done
