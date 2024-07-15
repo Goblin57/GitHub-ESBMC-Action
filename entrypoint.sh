@@ -1,6 +1,6 @@
 #!/bin/sh
 
-IFS="\n"
+IFS=$'\n'
 options=$1
 
 directory_recursive() {
