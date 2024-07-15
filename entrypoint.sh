@@ -1,6 +1,7 @@
 #!/bin/sh
 
 options=$1
+set +f
 
 directory_recursive() {
     cd $1
